@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import {
+  Link
+} from 'react-router-dom';
 
 class NavList extends Component {
 
@@ -16,7 +19,7 @@ class NavList extends Component {
         <h5 className="titleHeader">{this.props.name}</h5>
         {
           this.props.data.map((data) => {
-            return <div className="subTitles" onMouseEnter={this.hoverFunction}>{data.name}</div>;
+            return <li className="subTitles" onMouseEnter={this.hoverFunction} Link to="/home">{data.name}</li>;
           })
         }
       </div>
