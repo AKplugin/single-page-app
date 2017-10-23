@@ -1,0 +1,27 @@
+body{
+  background-color: #f0f2f5;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+.subTitles{
+  font-family: 'Open Sans',sans-serif;
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.subTitles:hover{
+  background-color: #f0f2f5l;
+}
+.navigationBar{
+  flex: 1;
+  border: 1px solid black;
+  background-color: #323447;
+  color: #fff;
+}
+.titleHeader{
+  font-family: 'Open Sans',sans-serif;
+  padding-left: 5px;
+  padding-right: 5px;
+}
