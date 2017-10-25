@@ -1,45 +1,80 @@
 import React, { Component } from 'react';
-import NavList from './widgets/NavList';
+import {
+  BrowserRouter,
+  Route,
+  NavLink, Switch
+} from 'react-router-dom';
 
 class Navigation extends Component {
-  render() {
 
-    const listedData = {
-      navData: [{
-          "name": "Forms",
-          "path": '',
-          "children": [{
-            "name": "Input",
-            "path": "Input"
-          },{
-            "name": "Button",
-            "path": "Button"
-          }]
-        },{
-          "name": "UI Elements",
-          "path": "UIElements"
-        }, {
-          "name": "Components",
-          "path": "Components"
-        }, {
-          "name": "Icons",
-          "path": "Icons"
-        }],
-      miscellaneous: [{
-          "name": "Pages",
-          "path": "Pages"
-        }]
-    };
+  state = {
+    appendChildren: [],
+    listedData: [{
+      "name": "Dashboard"
+    },{
+      "name": "User Interface",
+      "children": [{
+        "name": "Buttons",
+        "path": "Button"
+      },{
+        "name": "Cards",
+        "path": "Cards"
+      },{
+        "name": "Lists",
+        "path": "Cards"
+      },{
+        "name": "Pricing Boxes",
+        "path": "Cards"
+      },{
+        "name": "Menus",
+        "path": "Cards"
+      }]
+    },{
+      "name": "Tables",
+      "children": [{
+        "name": "Static Tables",
+        "path": "Cards"
+      },{
+        "name": "Responsive Tables",
+        "path": "Cards"
+      }]
+    },{
+      "name": "Extra Pages",
+      "children": [{
+        "name": "Login Page",
+        "path": "Cards"
+      },{
+        "name": "Sign Up Page",
+        "path": "Cards"
+      },{
+        "name": "404 Page",
+        "path": "Cards"
+      },{
+        "name": "Forgot Password",
+        "path": "Cards"
+      }]
+    }]
+  }
+
+  render() {
 
     return (
       <div>
-        <NavList name="User Interface" data={listedData.navData}/>
-
-        <NavList name="MISCELLANEOUS" data={listedData.miscellaneous} />
-
-        <NavList name="Settings" data={[]}/>
+          {this.renderItems()}
       </div>
     );
+  }
+
+  renderItems = function(){
+      this.state.listedData.map((data) => {
+        this.state.appendChildren.push(<li className='parentHeader'>{data.name}</li>);
+        if(data.children){
+          data.children.map((data) => {
+            this.state.appendChildren.push(<li className='childHeader'><NavLink to={data.path}>{data.name}</NavLink></li>);
+          })
+        }
+      });
+      return <ul className='navList'>{this.state.appendChildren}</ul>
   }
 }
 
