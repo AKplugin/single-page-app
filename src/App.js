@@ -1,32 +1,37 @@
 import React, { Component } from 'react';
 import {
-  BrowserRouter as Router,
+  BrowserRouter,
   Route,
-  Link
+  Link, Switch
 } from 'react-router-dom';
 import Navigation from './components/Navigation.js';
 import Dashboard from './components/Dashboard.js';
 import Home from './components/pages/Home';
+import Settings from './components/pages/Settings';
+import Pages from './components/pages/Pages';
 
 
 class App extends Component {
   render() {
     const { containerStyle, navigationStyle, dashboardStyle } = Styles;
     return (
-      <Router>
+      <BrowserRouter>
       <div style={containerStyle}>
         <div className="navigationBar">
           <Navigation />
         </div>
 
         <div style={dashboardStyle}>
-        <Route exact path="/home" component={Home}/>
-         <Route path="/about" component={Home}/>
-         <Route path="/topics" component={Home}/>
+          <Switch>
+            <Route exact path="/" component={Home}/>
+            <Route exact path="/Settings" component={Settings}/>
+            <Route exact path="/Pages" component={Pages}/>
+          </Switch>
+
         </div>
 
       </div>
-      </Router>
+      </BrowserRouter>
     );
   }
 }
@@ -35,7 +40,7 @@ const Styles = {
   containerStyle: {
     "display": "flex",
     "flexDirection": "row",
-    "height": "auto"
+    "height": "100%"
   },
   navigationStyle: {
 

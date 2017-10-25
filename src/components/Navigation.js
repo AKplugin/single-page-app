@@ -5,22 +5,30 @@ class Navigation extends Component {
   render() {
 
     const listedData = {
-      navData: [
-        {
-          "name": "Forms"
+      navData: [{
+          "name": "Forms",
+          "path": '',
+          "children": [{
+            "name": "Input",
+            "path": "Input"
+          },{
+            "name": "Button",
+            "path": "Button"
+          }]
         },{
-          "name": "UI Elements"
+          "name": "UI Elements",
+          "path": "UIElements"
         }, {
-          "name": "Components"
-        },
-        {
-          "name": "Forms"
+          "name": "Components",
+          "path": "Components"
+        }, {
+          "name": "Icons",
+          "path": "Icons"
         }],
-      miscellaneous: [
-        {
-          "name": "Pages"
-        }
-      ]
+      miscellaneous: [{
+          "name": "Pages",
+          "path": "Pages"
+        }]
     };
 
     return (
