@@ -10,20 +10,16 @@ class Navigation extends Component {
   state = {
     appendChildren: [],
     listedData: [{
-      "name": "Dashboard"
+      "name": "Dashboard",
+      "path": '',
     },{
-      "name": "User Interface",
+      "name": "Components",
+      "path": '',
       "children": [{
-        "name": "Buttons",
-        "path": "Button"
+        "name": "Tabs",
+        "path": "Tabs"
       },{
         "name": "Cards",
-        "path": "Cards"
-      },{
-        "name": "Lists",
-        "path": "Cards"
-      },{
-        "name": "Pricing Boxes",
         "path": "Cards"
       },{
         "name": "Menus",
@@ -31,6 +27,7 @@ class Navigation extends Component {
       }]
     },{
       "name": "Tables",
+      "path": '',
       "children": [{
         "name": "Static Tables",
         "path": "Cards"
@@ -40,6 +37,7 @@ class Navigation extends Component {
       }]
     },{
       "name": "Extra Pages",
+      "path": '',
       "children": [{
         "name": "Login Page",
         "path": "Cards"
@@ -57,25 +55,23 @@ class Navigation extends Component {
   }
 
   render() {
-
+    this.renderItems(this.state.listedData, '', 'parentMenu');
     return (
-      <div>
-          {this.renderItems()}
+      <div className='menuContainer'>
+          {this.state.appendChildren}
       </div>
     );
   }
 
-  renderItems = function(){
-      this.state.listedData.map((data) => {
-        this.state.appendChildren.push(<li className='parentHeader'>{data.name}</li>);
-        if(data.children){
-          data.children.map((data) => {
-            this.state.appendChildren.push(<li className='childHeader'><NavLink to={data.path}>{data.name}</NavLink></li>);
-          })
-        }
-      });
-      return <ul className='navList'>{this.state.appendChildren}</ul>
+  renderItems = function(data, id, classname){
+    data.map((data) => {
+      this.state.appendChildren.push(<div className={[id,classname,'menuList'].join(' ')}><NavLink to={data.path}>{data.name}</NavLink></div>);
+      if(data.children){
+        this.renderItems(data.children, data.name, 'childMenu');
+      }
+    });
   }
+
 }
 
 export default Navigation;

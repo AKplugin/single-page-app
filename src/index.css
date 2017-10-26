@@ -4,7 +4,7 @@
 }
 html{
   height: 100%;
-  font-family: dashboardFont;
+  font-family: Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif;
 }
 body{
   background-color: #f0f2f5;
@@ -16,24 +16,18 @@ body{
 #root{
   height: 100%;
 }
-.subTitles{
-  padding: 10px;
-  font-size: 12px;
-  cursor: pointer;
-}
-.subTitles a{
-  color: #ffffff;
-  text-decoration: none;
-}
-.subTitles:hover{
-  background-color: #f0f2f5l;
+.HeaderBar{
+  position: fixed;
+  width: 100%;
+  background-color: #63c2de;
+  height: 55px;
 }
 .navigationBar{
-  flex: 1.5;
-  border: 1px solid black;
-  background-color: #1b1c1d;
-  color: #fff;
+  flex: 2;
+  background-color: #e4e5e6;
+  color: #000;
   overflow: auto;
+  height: 100%;
 }
 .navList{
   padding: 0;
@@ -54,11 +48,28 @@ body{
   cursor: pointer;
 }
 .childHeader:hover{
-  background-color: #616161;
+  background-color:#63c2de;
 }
 .mainContainer{
   width: 98%;
   height: 96%;
   background-color: #ffffff;
   margin: 1%;
+}
+.menuContainer{
+  margin-top: 20px;
+}
+.menuList{
+  margin-left: 20px;
+  padding-left: 30px;
+  height: 40px;
+  line-height: 40px;
+  cursor: pointer;
+}
+.menuList:hover{
+  background-color: #63c2de;
+  border-radius: 5px 0 0 5px;
+}
+.childMenu{
+  padding-left: 40px;
 }
